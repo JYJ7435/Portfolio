@@ -3,8 +3,8 @@
   --color-white: #ffffff;
   --color-light-white: #eeeeee;
   --color-dark-white: #bdbdbd;
-  --color-skyblue: #76e8f5;
-  --color-dark-skyblue: #a0c6f7;
+  --color-skyblue: #a1c5f7;
+  --color-dark-skyblue: #589bf3;
   --color-grey: #616161;
   --color-dark-grey: #4d4d4d;
   --color-light-grey: #7c7979;
@@ -41,6 +41,13 @@ a {
 ul {
   list-style: none;
   padding-left: 0px;
+}
+
+button {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  outline: none;
 }
 /* Typography */
 
@@ -106,4 +113,33 @@ p {
 
 .navbar__menu__item:hover {
   background-color: var(--color-dark-skyblue);
+}
+
+/* Home */
+#home {
+  background: url("imgs/background.jpg") center/cover no-repeat;
+  padding: 40px;
+  text-align: center;
+}
+
+.home_avatar {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  border: 2px solid var(--color-light-white);
+}
+
+.home_title,
+.home_description {
+  color: var(--color-dark-grey);
+}
+
+.home_contact {
+  color: var(--color-dark-grey);
+  font-size: var(--font-regular);
+  font-weight: var(--weight-bold);
+  margin: 24px;
+  padding: 8px 12px;
+  border: 2px solid var(--color-dark-grey);
+  border-radius: var(--size-radius);
 }

@@ -3,7 +3,7 @@
   --color-white: #ffffff;
   --color-light-white: #eeeeee;
   --color-dark-white: #bdbdbd;
-  --color-skyblue: #a1c5f7;
+  --color-skyblue: #a3c2ee;
   --color-dark-skyblue: #589bf3;
   --color-grey: #616161;
   --color-dark-grey: #4d4d4d;
@@ -142,4 +142,74 @@ p {
   padding: 8px 12px;
   border: 2px solid var(--color-dark-grey);
   border-radius: var(--size-radius);
+}
+
+/* Section common */
+.section {
+  padding: 50px;
+  text-align: center;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* About */
+.about__majors {
+  display: flex;
+  justify-content: space-between;
+  margin: 80px 0px;
+}
+
+.major__icon {
+  width: 170px;
+  height: 170px;
+  line-height: 170px;
+  font-size: 70px;
+  margin: auto;
+  color: var(--color-dark-grey);
+  border: 1px solid var(--color-blue);
+  border-radius: 50%;
+  margin-bottom: 16px;
+}
+.major__icon i {
+  transition: all 300ms ease;
+}
+
+.major__icon:hover i {
+  color: var(--color-skyblue);
+  transform: rotate(-30deg) scale(1.2);
+}
+
+.major__title,
+.major__description {
+  color: var(--color-dark-grey);
+}
+
+.major__description {
+  font-size: var(--font-small);
+}
+
+.study {
+  display: flex;
+  align-items: center;
+}
+.study i {
+  font-size: var(--font-medium);
+  color: var(--color-dark-grey);
+}
+.job_discription {
+  margin: 0 16px;
+  text-align: left;
+}
+
+.study__name,
+.study__period {
+  color: var(--color-light-grey);
+}
+
+.study__name {
+  font-size: var(--font-small);
+}
+
+.study__period {
+  font-size: var(--font-micro);
 }

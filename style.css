@@ -91,6 +91,7 @@ p {
   color: var(--color-grey);
   padding: 16px;
   transition: all 300ms ease-in-out;
+  z-index: 1;
 }
 
 #navbar.navbar--dark {

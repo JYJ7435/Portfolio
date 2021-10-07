@@ -13,7 +13,7 @@ document.addEventListener('scroll', () => {
     }
 });
 
-// Handle scrolling navbar menu
+// navbar menu click
 const navbarMenu = document.querySelector('.navbar__menu');
 navbarMenu.addEventListener('click', (event) => {
     const target = event.target;
@@ -21,7 +21,21 @@ navbarMenu.addEventListener('click', (event) => {
     if (link == null){
         return;
     }
-    console.log(event.target.dataset.link);
-    const scrollTo = document.querySelector(link);
-    scrollTo.scrollIntoView({behavior:"smooth"});
+    // console.log(event.target.dataset.link);
+    // const scrollTo = document.querySelector(link);
+    // scrollTo.scrollIntoView({behavior:"smooth"});
+    scrollIntoView(link);
 });
+
+//"contact me" button click
+const contactBtn = document.querySelector('.home_contact');
+contactBtn.addEventListener('click', () => {
+    // const clickBtn = document.querySelector('#contact');
+    // clickBtn.scrollIntoView({behavior:"smooth"});
+    scrollIntoView('#contact');
+});
+
+function scrollIntoView(selector){
+    const clickBtn = document.querySelector(selector);
+    clickBtn.scrollIntoView({behavior:"smooth"});
+}

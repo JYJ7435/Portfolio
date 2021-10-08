@@ -2,7 +2,7 @@
 
 //Make navbar transparent
 const navbar = document.querySelector('#navbar');
-const navbarHeight = navbar.getBoundingClientRect().height
+const navbarHeight = navbar.getBoundingClientRect().height;
 document.addEventListener('scroll', () => {
     // console.log(window.scrollY);
     // console.log(`navbarHeight: ${navbarHeight}`);
@@ -39,3 +39,12 @@ function scrollIntoView(selector){
     const clickBtn = document.querySelector(selector);
     clickBtn.scrollIntoView({behavior:"smooth"});
 }
+
+// When scrolling down the window, the home screen becomes transparent
+const home = document.querySelector(".home__container");
+const homeScreen = home.getBoundingClientRect().height;
+document.addEventListener('scroll', () => {
+    //console.log(1 - window.scrollY / homeScreen);
+    home.style.opacity = (1 - window.scrollY / homeScreen);
+
+});

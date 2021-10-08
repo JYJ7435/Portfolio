@@ -46,5 +46,19 @@ const homeScreen = home.getBoundingClientRect().height;
 document.addEventListener('scroll', () => {
     //console.log(1 - window.scrollY / homeScreen);
     home.style.opacity = (1 - window.scrollY / homeScreen);
-
 });
+
+//Up Button
+const upBtn = document.querySelector('.up__button');
+upBtn.addEventListener('click', () => {
+    scrollIntoView('#home');
+});
+
+document.addEventListener('scroll', () => {
+      if(window.scrollY > homeScreen / 2){
+        upBtn.classList.add('visible')
+     } else {
+        upBtn.classList.remove('visible')
+     };
+});
+

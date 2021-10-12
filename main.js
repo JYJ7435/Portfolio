@@ -43,11 +43,6 @@ contactBtn.addEventListener('click', () => {
     scrollIntoView('#contact');
 });
 
-function scrollIntoView(selector){
-    const clickBtn = document.querySelector(selector);
-    clickBtn.scrollIntoView({behavior:"smooth"});
-}
-
 // When scrolling down the window, the home screen becomes transparent
 const home = document.querySelector(".home__container");
 const homeScreen = home.getBoundingClientRect().height;
@@ -100,3 +95,69 @@ workBtn.addEventListener('click', (e) => {
     }, 300);
 });
 
+// 1.모든 섹션 요소들과 메뉴 아이템들을 가져온다
+// 2.IntersectionObserver를 이용해서 모든 섹션들을 관찰한다.
+// 3.보여지는 섹션에 해당하는 메뉴 아이템을 활성화 시킨다.
+
+const sectionIds = [
+    '#home',
+    '#about',
+    '#skills',
+    '#work',
+    '#testimonials',
+    '#contact'
+ ];
+
+
+ const sections = sectionIds.map(id => document.querySelector(id));
+ const navItems = sectionIds.map(id => document.querySelector(`[data-link="${id}"]`));
+//  console.log(sections);
+// console.log(navItems);
+
+let selectedNavIndex = 0;
+let selectedNavItem = navItems[0];
+function selectNavItem(selected) {
+    selectedNavItem.classList.remove('active');
+    selectedNavItem = selected;
+    selectedNavItem.classList.add('active');
+}
+
+function scrollIntoView(selector){
+    const clickBtn = document.querySelector(selector);
+    clickBtn.scrollIntoView({behavior:"smooth"});
+    selectNavItem(navItems[sectionIds.indexOf(selector)]);
+};
+
+const observerOptions = {
+    root:null,
+    rootMargin: '0px',
+    threshold: 0.3,
+} ;
+const observerCallback = (entries, observer) => {
+    entries.forEach(entry => {
+        // console.log(entry.target);
+        if(!entry.isIntersecting && entry.intersectionRatio > 0){
+            // console.log(entry);
+            const index = sectionIds.indexOf(`#${entry.target.id}`);
+            // console.log(index, entry.target.id);
+            // 스크롤이 아래로 되어서 페이지가 올라옴
+            if(entry.boundingClientRect.y < 0) {
+                selectedNavIndex = index + 1;
+            } else {
+                selectedNavIndex = index - 1;
+            }
+        }
+    });
+};
+
+const observer = new IntersectionObserver(observerCallback, observerOptions);
+sections.forEach(section => observer.observe(section));
+
+window.addEventListener('wheel', () => {
+    if(window.scroll === 0){
+        selectedNavIndex = 0;
+    } else if (Math.round(window.scrollY + window.innerHeight === document.body.clientHeight)){
+        selectedNavIndex = navItems.length - 1;
+    }
+    selectNavItem(navItems[selectedNavIndex]);
+});
